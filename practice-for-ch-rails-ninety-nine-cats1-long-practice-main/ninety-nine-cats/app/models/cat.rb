@@ -31,26 +31,26 @@ class Cat < ApplicationRecord
         today = Date.today # get current date
 
         # did the cat have its birthday this year?
-        had_birthday = ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? true : false) 
+        had_birthday = ((today.month > dob.month || (today.month == dob.month && today.day >= dob.day)) ? true : false) 
 
         # if yes, then subtract this year from birthday year, if not then also subtract 1 to get how many full years old they are
-        years = now.year - dob.year - (had_birthday ? 0 : 1)
+        years = today.year - dob.year - (had_birthday ? 0 : 1)
 
         # get the month difference from birthday month and today's month.
         # if the cat have not had their birthday yet, then subtract the difference from 12(months)
-        months = had_birthday ? now.month - dob.month : 12 - (now.month - dob.month)
+        months = had_birthday ? today.month - dob.month : 12 - (today.month - dob.month)
 
         # for <1 year old
         if years == 0
-            return months > 1 ? months.to_s + " months old" : months.to_s + " month old"  
+            return months > 1 ? months.to_s + " months" : months.to_s + " month"  
 
         # for =1 year old
         elsif years == 1
-            return months > 1 ? years.to_s + " year and " + months.to_s + " months old" : years.to_s + " year and " + months.to_s + " month old" 
+            return months > 1 ? years.to_s + " year and " + months.to_s + " months" : years.to_s + " year and " + months.to_s + " month" 
 
         # for >1 year old
         else
-            return months > 1 ? years.to_s + " years and " + months.to_s + " months old" : years.to_s + " years and " + months.to_s + " month old"
+            return months > 1 ? years.to_s + " years and " + months.to_s + " months" : years.to_s + " years and " + months.to_s + " month"
         end
     end
 end
