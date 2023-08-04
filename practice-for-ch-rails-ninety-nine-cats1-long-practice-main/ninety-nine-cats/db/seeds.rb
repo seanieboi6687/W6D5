@@ -5,15 +5,28 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Cat.create!([{
-    name:'Harvey'
-    
-    },
+Cat.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('cats')
 
-    {
-    username:'Justin Bieber'
+Cat.create!([
+    {   name:'Harvey',
+        color: 'White',
+        birth_date: '2022/07/31',
+        sex: 'M',
+        description: 'He is a purebred Ragdoll which loves affentionate touch and full of joy! You can think of him as a dog of the cat world :D'
     },
-    
     {
-    username:'Big Wayne'
-}])
+        name:'Chef',
+        color: 'Black',
+        birth_date: '2021/09/03',
+        sex: 'M',
+        description: "Funny, he is named after the 'Chef' character from 'South Park' 🤣"
+    },
+    {
+        name:'Smol',
+        color: 'Orange',
+        birth_date: '2023/07/01',
+        sex: 'F',
+        description: "Her name is 'Smol' because she is tiny 🥹"
+    }
+])
