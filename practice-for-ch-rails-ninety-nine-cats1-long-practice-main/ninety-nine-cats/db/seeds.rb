@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Cat.create!([{
+    name:'Harvey'
+    
+    },
+
+    {
+    username:'Justin Bieber'
+    },
+    
+    {
+    username:'Big Wayne'
+}])
